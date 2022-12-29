@@ -6,21 +6,22 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
 import SendIcon from '@mui/icons-material/Send'
 import Card from '../../../containers/card/Card'
-import signIn from '../../../services/api/signIn'
 import PasswordInput from '../../../components/PasswordInput'
+import useSignIn from '../../../hooks/api/useSignIn'
 
 const Form: FC = () => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [check, setCheck] = useState(false)
   const [loading, setLoading] = useState(false)
+  const { fetch } = useSignIn()
 
   const submit = (event: FormEvent) => {
     event.preventDefault()
 
     if (loading) return
 
-    signIn({ username, password, check }, setLoading)
+    fetch({ username, password, check }, setLoading)
   }
 
   return (
@@ -38,13 +39,16 @@ const Form: FC = () => {
           autoFocus={true}
           value={username}
           onChange={e => setUsername(e.target.value)}
+          data-cy="input username"
         />
         <PasswordInput
           password={password}
           setPassword={setPassword}
           loading={loading}
+          dataCy="input password"
         />
         <FormControlLabel
+          data-cy="remember me"
           control={
             <Checkbox
               disabled={loading}
@@ -60,6 +64,7 @@ const Form: FC = () => {
           loading={loading}
           loadingPosition="end"
           variant="contained"
+          data-cy="submit"
           style={{
             backgroundColor: '#3f51b5',
             color: '#fff',
