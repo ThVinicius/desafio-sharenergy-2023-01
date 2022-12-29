@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "author": "Vinicius Pacheco dos Santos",
   "scripts": {
     "start": "vite",
     "dev": "vite --host",
@@ -12,12 +13,14 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@mui/icons-material": "^5.11.0",
     "@mui/lab": "^5.0.0-alpha.114",
     "@mui/material": "^5.11.2",
     "axios": "^1.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.6.1",
+    "react-toastify": "^9.1.1",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
