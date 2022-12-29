@@ -11,13 +11,19 @@ interface IProps {
   password: string
   setPassword: Dispatch<SetStateAction<string>>
   loading: boolean
+  dataCy: string
 }
 
-const PasswordInput: FC<IProps> = ({ password, setPassword, loading }) => {
+const PasswordInput: FC<IProps> = ({
+  password,
+  setPassword,
+  loading,
+  dataCy
+}) => {
   const [showPassword, setShowPassword] = useState(false)
 
   return (
-    <FormControl required disabled={loading}>
+    <FormControl required disabled={loading} data-cy={dataCy}>
       <InputLabel>Senha</InputLabel>
       <OutlinedInput
         type={showPassword ? 'text' : 'password'}
