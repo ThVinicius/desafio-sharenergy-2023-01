@@ -5,7 +5,7 @@ dotenv.config()
 
 const MONGO_URI = process.env.MONGO_URI!
 
-const mongo = new MongoClient(MONGO_URI).db()
+const mongo = new MongoClient(MONGO_URI)
 
 const objectId = new ObjectId()
 
