@@ -4,7 +4,9 @@ import 'react-toastify/dist/ReactToastify.css'
 import { ToastContainer } from 'react-toastify'
 import ResetCSS from './assets/css/Reset'
 import GlobalCSS from './assets/css/Global'
-import Login from './pages/login/Login'
+import { TokenProvider } from './context/useToken'
+import Login from './pages/login/Index'
+import Users from './pages/users/Index'
 
 const App: FC = () => {
   return (
@@ -12,9 +14,12 @@ const App: FC = () => {
       <ResetCSS />
       <GlobalCSS />
       <ToastContainer />
-      <Routes>
-        <Route path="/" element={<Login />} />
-      </Routes>
+      <TokenProvider>
+        <Routes>
+          <Route path="/" element={<Login />} />
+          <Route path="/users" element={<Users />} />
+        </Routes>
+      </TokenProvider>
     </BrowserRouter>
   )
 }
