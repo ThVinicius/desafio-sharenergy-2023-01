@@ -5,6 +5,7 @@ import { ToastContainer } from 'react-toastify'
 import ResetCSS from './assets/css/Reset'
 import GlobalCSS from './assets/css/Global'
 import { TokenProvider } from './context/useToken'
+import Header from './components/header/Header'
 import Login from './pages/login/Index'
 import Users from './pages/users/Index'
 
@@ -15,6 +16,7 @@ const App: FC = () => {
       <GlobalCSS />
       <ToastContainer />
       <TokenProvider>
+        <Header />
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/users" element={<Users />} />
