@@ -6,7 +6,7 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import Checkbox from '@mui/material/Checkbox'
 import SendIcon from '@mui/icons-material/Send'
 import Card from '../../../containers/card/Card'
-import PasswordInput from '../../../components/PasswordInput'
+import PasswordInput from '../../../components/passwordInput/PasswordInput'
 import useSignIn from '../../../hooks/api/useSignIn'
 
 const Form: FC = () => {
