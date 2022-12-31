@@ -1,12 +1,50 @@
 import { MongoClient, ObjectId } from 'mongodb'
 import dotenv from 'dotenv'
+import bcrypt from 'bcrypt'
 
 dotenv.config()
 
-const MONGO_URI = process.env.MONGO_URI!
+export class MongoConfig {
+  mongo: MongoClient
+  objectId: ObjectId
+  MONGO_URI: string
 
-const mongo = new MongoClient(MONGO_URI)
+  constructor() {
+    this.MONGO_URI = process.env.MONGO_URI!
+    this.mongo = new MongoClient(this.MONGO_URI!)
+    this.objectId = new ObjectId()
+  }
 
-const objectId = new ObjectId()
+  async seed() {
+    await this.mongo.connect()
+
+    const username = 'desafiosharenergy'
+
+    const findUsername = await this.mongo
+      .db()
+      .collection('users')
+      .findOne({ username })
+
+    if (!findUsername) {
+      const saltRounds: number = 10
+
+      let password = 'sh@r3n3rgy'
+      password = bcrypt.hashSync(password, saltRounds)
+
+      await this.mongo
+        .db()
+        .collection('users')
+        .insertOne({ username, password })
+    }
+
+    this.mongo.close()
+  }
+}
+
+const mongoConfig = new MongoConfig()
+
+mongoConfig.seed()
+
+const { mongo, objectId } = mongoConfig
 
 export { mongo, objectId }
