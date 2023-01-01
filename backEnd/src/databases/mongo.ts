@@ -1,6 +1,7 @@
 import { MongoClient, ObjectId } from 'mongodb'
 import dotenv from 'dotenv'
 import bcrypt from 'bcrypt'
+import randomUsers from './seeds/data'
 
 dotenv.config()
 
@@ -35,6 +36,15 @@ export class MongoConfig {
         .db()
         .collection('users')
         .insertOne({ username, password })
+    }
+
+    const findRandomUser = await this.mongo
+      .db()
+      .collection('randomUsers')
+      .findOne()
+
+    if (!findRandomUser) {
+      await this.mongo.db().collection('randomUsers').insertMany(randomUsers())
     }
 
     this.mongo.close()
