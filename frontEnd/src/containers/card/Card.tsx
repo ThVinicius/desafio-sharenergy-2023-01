@@ -2,7 +2,7 @@ import { FC } from 'react'
 import { Container } from './cardStyles'
 
 interface IProps {
-  children: JSX.Element[]
+  children: JSX.Element | JSX.Element[]
   padding?: string
 }
 
