@@ -1,8 +1,12 @@
 import styled from 'styled-components'
 
-const Container = styled.div`
+interface IProps {
+  calcHeight: string
+}
+
+const Container = styled.div<IProps>`
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - ${props => props.calcHeight});
   background: #11998e; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,

@@ -2,11 +2,12 @@ import { FC } from 'react'
 import { Container } from './containerStyles'
 
 interface IProps {
-  children: JSX.Element
+  children: JSX.Element | JSX.Element[]
+  calcHeight?: string
 }
 
-const AppContainer: FC<IProps> = ({ children }) => {
-  return <Container>{children}</Container>
+const AppContainer: FC<IProps> = ({ children, calcHeight = '0px' }) => {
+  return <Container calcHeight={calcHeight}>{children}</Container>
 }
 
 export default AppContainer

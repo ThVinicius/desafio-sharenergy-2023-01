@@ -4,11 +4,12 @@ import AppContainer from '../app/AppContainer'
 
 interface IProps {
   children: JSX.Element
+  calcHeight?: string
 }
 
-const AlignCenter: FC<IProps> = ({ children }) => {
+const AlignCenter: FC<IProps> = ({ children, calcHeight = '0px' }) => {
   return (
-    <AppContainer>
+    <AppContainer calcHeight={calcHeight}>
       <Container>{children}</Container>
     </AppContainer>
   )
