@@ -1,7 +1,13 @@
 import { FC } from 'react'
+import AlignCenterContainer from '../../containers/alignCenter/AlignCenter'
+import Content from './content/Content'
 
 const Users: FC = () => {
-  return <h1>Página dos usuários</h1>
+  return (
+    <AlignCenterContainer calcHeight="80px">
+      <Content />
+    </AlignCenterContainer>
+  )
 }
 
 export default Users
