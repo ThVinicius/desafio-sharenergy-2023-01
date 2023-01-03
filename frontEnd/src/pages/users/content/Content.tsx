@@ -1,6 +1,6 @@
 import { FC, useState } from 'react'
 import useGetAllUsers from '../../../hooks/api/useGetAllUsers'
-import useGetUsersPag from '../../../hooks/randomUser/useGetUsersPag'
+import useGetUsersPag from '../../../hooks/api/randomUser/useGetUsersPag'
 import useSearch from '../../../hooks/useSearch'
 import Filter from '../filter/Filter'
 import SkeletonTemplate from '../userTemplate/SkeletonTemplate'
