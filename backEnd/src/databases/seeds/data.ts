@@ -2809,7 +2809,7 @@ const page5 = [
   }
 ]
 
-export default function randomUsers() {
+export function randomUsers() {
   const users = [...page1, ...page2, ...page3, ...page4, ...page5]
 
   return users.map(user => ({
@@ -2820,3 +2820,48 @@ export default function randomUsers() {
     age: user.dob.age
   }))
 }
+
+export const customers = [
+  {
+    name: 'Jason Perry',
+    email: 'jason.perry@example.com',
+    fone: '18981664852',
+    address: {
+      cep: '30130005',
+      state: 'Minas Gerais',
+      city: 'Belo Horizonte',
+      district: 'Boa Viagem',
+      street: 'Avenida Afonso Pena',
+      number: '1025'
+    },
+    cpf: '21712420003'
+  },
+  {
+    name: 'Gonzaga Rocha',
+    email: 'gonzaga.rocha@example.com',
+    fone: '5141906899',
+    address: {
+      cep: '09961660',
+      state: 'São Paulo',
+      city: 'Diadema',
+      district: 'Casa Grande',
+      street: 'Rua Barão de Vitória',
+      number: '4416'
+    },
+    cpf: '73268821508'
+  },
+  {
+    name: 'Armando Freitas',
+    email: 'armando.freitas@example.com',
+    fone: '8761571293',
+    address: {
+      cep: '20040002',
+      state: 'Rio de Janeiro',
+      city: 'Rio de Janeiro',
+      district: 'Centro',
+      street: 'Avenida Rio Branco',
+      number: '1416'
+    },
+    cpf: '19680369209'
+  }
+]

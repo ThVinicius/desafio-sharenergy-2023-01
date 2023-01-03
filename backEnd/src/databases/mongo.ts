@@ -1,7 +1,7 @@
 import { MongoClient, ObjectId } from 'mongodb'
 import dotenv from 'dotenv'
 import bcrypt from 'bcrypt'
-import randomUsers from './seeds/data'
+import { randomUsers, customers } from './seeds/data'
 
 dotenv.config()
 
@@ -27,6 +27,11 @@ export class MongoConfig {
       .findOne({ username })
 
     if (!findUsername) {
+      await this.mongo
+        .db()
+        .collection('users')
+        .createIndex({ username: 1 }, { unique: true })
+
       const saltRounds: number = 10
 
       let password = 'sh@r3n3rgy'
@@ -47,7 +52,28 @@ export class MongoConfig {
       await this.mongo.db().collection('randomUsers').insertMany(randomUsers())
     }
 
-    this.mongo.close()
+    const findCustomer = await this.mongo.db().collection('customers').findOne()
+
+    if (!findCustomer) {
+      await this.mongo
+        .db()
+        .collection('customers')
+        .createIndex({ name: 1 }, { unique: true })
+
+      await this.mongo
+        .db()
+        .collection('customers')
+        .createIndex({ email: 1 }, { unique: true })
+
+      await this.mongo
+        .db()
+        .collection('customers')
+        .createIndex({ cpf: 1 }, { unique: true })
+
+      await this.mongo.db().collection('customers').insertMany(customers)
+    }
+
+    await this.mongo.close()
   }
 }
 
