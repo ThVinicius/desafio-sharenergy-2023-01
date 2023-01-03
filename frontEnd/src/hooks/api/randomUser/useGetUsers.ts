@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { IUser } from '../../types/User'
+import { IUser } from '../../../types/User'
 
 export default function useGetUsers() {
   const [users, setUsers] = useState<IUser[] | null>(null)

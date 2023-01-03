@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { IUser } from '../../types/User'
+import { IUser } from '../../../types/User'
 
 export default function useGetUsersPag(page: number) {
   const [pagUsers, setPagUsers] = useState<IUser[] | null>(null)
