@@ -1,9 +1,11 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import usePersistence from '../../usePersistence'
 
 export default function useGetDogs() {
   const [dog, setDog] = useState({ url: '', extension: '' })
   const [loadingGetDog, setLoadingGetDog] = useState(false)
+  const { loginPersistence } = usePersistence()
 
   const getRandomDog = () => {
     setLoadingGetDog(true)
@@ -25,7 +27,11 @@ export default function useGetDogs() {
       .finally(() => setLoadingGetDog(false))
   }
 
-  useEffect(() => getRandomDog(), [])
+  useEffect(() => {
+    const token = loginPersistence()
+
+    if (typeof token === 'string') getRandomDog()
+  }, [])
 
   return { getRandomDog, dog, loadingGetDog }
 }

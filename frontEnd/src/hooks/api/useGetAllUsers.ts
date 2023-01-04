@@ -1,28 +1,27 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
-import { useToken } from '../../context/useToken'
 import { IUser } from '../../types/User'
-import loginPersistence from '../../utils/loginPersistence'
+import usePersistence from '../usePersistence'
 
 export default function useGetAllUsers() {
-  const navigate = useNavigate()
-  const { token: tokenContext, setToken } = useToken()
   const [allUsers, setAllUsers] = useState<IUser[] | null>(null)
   const [loadingAllUsers, setLoadingAllUsers] = useState(true)
+  const { loginPersistence } = usePersistence()
 
   useEffect(() => {
-    const token = loginPersistence(tokenContext, setToken, navigate)
+    const token = loginPersistence()
 
-    const URL = `${import.meta.env.VITE_BASE_URL}/random-users`
+    if (typeof token === 'string') {
+      const URL = `${import.meta.env.VITE_BASE_URL}/random-users`
 
-    const config = { headers: { authorization: `Bearer ${token}` } }
+      const config = { headers: { authorization: `Bearer ${token}` } }
 
-    const promise = axios.get(URL, config)
+      const promise = axios.get(URL, config)
 
-    promise
-      .then(({ data }) => setAllUsers(data))
-      .finally(() => setLoadingAllUsers(false))
+      promise
+        .then(({ data }) => setAllUsers(data))
+        .finally(() => setLoadingAllUsers(false))
+    }
   }, [])
 
   return { allUsers, loadingAllUsers }
