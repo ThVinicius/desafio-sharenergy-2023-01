@@ -7,6 +7,14 @@ class CustomerController {
 
     return res.status(200).send(customers)
   }
+
+  async remove(req: Request, res: Response) {
+    const { id } = req.params
+
+    await customerService.deleteCustomer(id)
+
+    return res.sendStatus(200)
+  }
 }
 
 export default new CustomerController()
