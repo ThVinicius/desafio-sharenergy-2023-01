@@ -25,7 +25,7 @@ export default function useSignIn() {
 
     const promise = axios.post(URL, { username, password })
 
-    const id = toast.loading('Promise is pending')
+    const id = toast.loading('Requisição em andamento...')
 
     promise
       .then(({ data }: { data: { token: string } }) => {
@@ -43,7 +43,11 @@ export default function useSignIn() {
           render: 'Login efetuado com sucesso! 👌',
           type: 'success',
           isLoading: false,
-          autoClose: 5000
+          autoClose: 5000,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          closeButton: true
         })
 
         navigate('/users')
@@ -66,7 +70,11 @@ export default function useSignIn() {
           render: `${renderToast} 🤯`,
           type: 'error',
           isLoading: false,
-          autoClose: 5000
+          autoClose: 5000,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          closeButton: true
         })
       })
       .finally(() => setLoading(false))
