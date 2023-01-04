@@ -10,6 +10,7 @@ import Login from './pages/login/Index'
 import Users from './pages/users/Index'
 import Cats from './pages/cats/Index'
 import Dogs from './pages/dogs/Index'
+import Customers from './pages/customers/Index'
 
 const App: FC = () => {
   return (
@@ -24,6 +25,7 @@ const App: FC = () => {
           <Route path="/users" element={<Users />} />
           <Route path="/cats" element={<Cats />} />
           <Route path="/dogs" element={<Dogs />} />
+          <Route path="/customers" element={<Customers />} />
         </Routes>
       </TokenProvider>
     </BrowserRouter>
