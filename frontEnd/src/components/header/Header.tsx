@@ -9,8 +9,10 @@ import customer from '../../assets/images/service.png'
 import logoutIcon from '../../assets/images/logout.png'
 import useLogout from '../../hooks/useLogout'
 
+const paths = ['/users', '/cats', '/dogs', '/customers', '/customers/add']
+
 const Header: FC = () => {
-  const { isPath } = usePath(['/users', '/cats', '/dogs', '/customers'])
+  const { isPath } = usePath(paths)
   const { logout } = useLogout()
 
   return (

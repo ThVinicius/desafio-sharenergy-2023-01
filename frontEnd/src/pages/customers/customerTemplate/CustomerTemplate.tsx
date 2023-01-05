@@ -1,13 +1,7 @@
 import { Dispatch, FC, SetStateAction, useState } from 'react'
 import Button from '@mui/material/Button'
 import { ICustomer } from '../../../types/Customers'
-import {
-  Address,
-  AddressBox,
-  ButtonsBox,
-  Container,
-  Info
-} from './CustomerTemplateStyle'
+import { ButtonsBox, Container, Info } from './CustomerTemplateStyle'
 import DeleteModal from '../deleteModal/DeleteModal'
 
 interface IProps extends ICustomer {
@@ -21,7 +15,7 @@ const CustomerTemplate: FC<IProps> = props => {
     <>
       <Container>
         <ButtonsBox>
-          <Button variant="contained">Atualizar</Button>
+          <Button variant="contained">Vizualizar</Button>
           <Button
             onClick={() => setOpen(true)}
             variant="contained"
@@ -40,40 +34,7 @@ const CustomerTemplate: FC<IProps> = props => {
         </Info>
         <Info>
           <h5>Telefone</h5>
-          <h6>{props.fone}</h6>
-        </Info>
-        <Info>
-          <h5>CPF</h5>
-          <h6>{props.cpf}</h6>
-        </Info>
-        <Info>
-          <h5>Endereço</h5>
-          <Address>
-            <AddressBox>
-              <h5>Estado</h5>
-              <h6>{props.address.state}</h6>
-            </AddressBox>
-            <AddressBox>
-              <h5>Cidade</h5>
-              <h6>{props.address.city}</h6>
-            </AddressBox>
-            <AddressBox>
-              <h5>Bairro</h5>
-              <h6>{props.address.district}</h6>
-            </AddressBox>
-            <AddressBox>
-              <h5>Rua</h5>
-              <h6>{props.address.street}</h6>
-            </AddressBox>
-            <AddressBox>
-              <h5>Número</h5>
-              <h6>{props.address.number}</h6>
-            </AddressBox>
-            <AddressBox>
-              <h5>CEP</h5>
-              <h6>{props.address.cep}</h6>
-            </AddressBox>
-          </Address>
+          <h6>{props.phone}</h6>
         </Info>
       </Container>
       <DeleteModal
@@ -81,7 +42,7 @@ const CustomerTemplate: FC<IProps> = props => {
           open,
           setOpen,
           name: props.name,
-          _id: props._id,
+          _id: props._id!,
           setCustomers: props.setCustomers
         }}
       />

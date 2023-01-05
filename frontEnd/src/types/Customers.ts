@@ -1,8 +1,8 @@
 export interface ICustomer {
-  _id: string
+  _id?: string
   name: string
   email: string
-  fone: string
+  phone: string
   address: {
     cep: string
     state: string
