@@ -7,6 +7,14 @@ class CustomerService {
     return await customerRepository.getAll()
   }
 
+  async getOneById(id: string) {
+    const customer = await customerRepository.findOneById(id)
+
+    if (!customer) notFound('Cliente não encontrado!')
+
+    return customer
+  }
+
   async addCustomer(customer: ICustomer) {
     const customerId = await customerRepository.add(customer)
 

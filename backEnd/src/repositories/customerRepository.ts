@@ -4,6 +4,8 @@ import { ICustomer, MongoCustomer } from '../types/customerType'
 export abstract class CustomerRepository {
   abstract add(customer: ICustomer): Promise<string>
 
+  abstract findOneById(id: string): Promise<MongoCustomer | null>
+
   abstract getAll(): Promise<MongoCustomer[]>
 
   abstract deleteCustomer(id: string): Promise<Document | null>

@@ -21,6 +21,6 @@ const add = joi.object({
   cpf: joi.string().pattern(cpfRegex).required()
 })
 
-const remove = joi.object({ id: joi.string().trim().required() })
+const id = joi.object({ id: joi.string().trim().required() })
 
-export default { add, remove }
+export default { add, id }

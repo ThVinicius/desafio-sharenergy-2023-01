@@ -6,20 +6,26 @@ import customerSchema from '../schemas/customerSchema'
 
 const route = Router()
 
-route.get('/customers', tokenValidate, customerController.getAll)
+route.use(tokenValidate)
+
+route.get('/customers', customerController.getAll)
+
+const isParams = true
+route.get(
+  '/customers/:id',
+  schemaValidator(customerSchema.id, isParams),
+  customerController.getOneById
+)
 
 route.post(
   '/customers',
   schemaValidator(customerSchema.add),
-  tokenValidate,
   customerController.addCustomer
 )
 
-const isParams = true
 route.delete(
   '/customers/:id',
-  schemaValidator(customerSchema.remove, isParams),
-  tokenValidate,
+  schemaValidator(customerSchema.id, isParams),
   customerController.remove
 )
 

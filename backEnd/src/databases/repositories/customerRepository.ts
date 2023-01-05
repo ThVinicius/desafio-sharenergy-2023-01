@@ -19,6 +19,21 @@ class MongoCustomerRepository implements CustomerRepository {
     return parseId
   }
 
+  async findOneById(id: string): Promise<MongoCustomer | null> {
+    await mongo.connect()
+
+    const _id = new ObjectId(id)
+
+    const customer = await mongo
+      .db()
+      .collection<MongoCustomer>('customers')
+      .findOne({ _id })
+
+    await mongo.close()
+
+    return customer
+  }
+
   async getAll(): Promise<MongoCustomer[]> {
     await mongo.connect()
 

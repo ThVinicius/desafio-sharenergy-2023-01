@@ -3,6 +3,14 @@ import customerService from '../services/customerService'
 import { ICustomer } from '../types/customerType'
 
 class CustomerController {
+  async getOneById(req: Request, res: Response) {
+    const { id } = req.params
+
+    const customer = await customerService.getOneById(id)
+
+    return res.status(200).send(customer)
+  }
+
   async getAll(_: Request, res: Response) {
     const customers = await customerService.getAll()
 
