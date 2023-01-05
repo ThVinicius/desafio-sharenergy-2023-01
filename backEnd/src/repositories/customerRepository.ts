@@ -2,7 +2,7 @@ import { Document } from 'mongodb'
 import { ICustomer, MongoCustomer } from '../types/customerType'
 
 export abstract class CustomerRepository {
-  abstract add(customer: ICustomer): Promise<MongoCustomer>
+  abstract add(customer: ICustomer): Promise<string>
 
   abstract getAll(): Promise<MongoCustomer[]>
 

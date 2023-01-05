@@ -8,6 +8,13 @@ const route = Router()
 
 route.get('/customers', tokenValidate, customerController.getAll)
 
+route.post(
+  '/customers',
+  schemaValidator(customerSchema.add),
+  tokenValidate,
+  customerController.addCustomer
+)
+
 const isParams = true
 route.delete(
   '/customers/:id',

@@ -3,7 +3,7 @@ import { ObjectId, WithId, Document } from 'mongodb'
 export interface ICustomer {
   name: string
   email: string
-  fone: string
+  phone: string
   address: {
     cep: string
     city: string

@@ -4,8 +4,19 @@ import { ICustomer, MongoCustomer } from '../../types/customerType'
 import { mongo } from '../mongo'
 
 class MongoCustomerRepository implements CustomerRepository {
-  add(customer: ICustomer): Promise<MongoCustomer> {
-    throw new Error('Method not implemented.')
+  async add(customer: ICustomer): Promise<string> {
+    await mongo.connect()
+
+    const { insertedId } = await mongo
+      .db()
+      .collection('customers')
+      .insertOne(customer)
+
+    const parseId = insertedId.toString()
+
+    await mongo.close()
+
+    return parseId
   }
 
   async getAll(): Promise<MongoCustomer[]> {
