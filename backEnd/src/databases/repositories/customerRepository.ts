@@ -1,6 +1,10 @@
 import { ObjectId, Document } from 'mongodb'
 import { CustomerRepository } from '../../repositories/customerRepository'
-import { ICustomer, MongoCustomer } from '../../types/customerType'
+import {
+  ICustomer,
+  ICustomerUpdate,
+  MongoCustomer
+} from '../../types/customerType'
 import { mongo } from '../mongo'
 
 class MongoCustomerRepository implements CustomerRepository {
@@ -31,6 +35,22 @@ class MongoCustomerRepository implements CustomerRepository {
       .toArray()
 
     return customers
+  }
+
+  async update(customer: ICustomerUpdate): Promise<MongoCustomer | null> {
+    const parseId = new ObjectId(customer._id!)
+
+    delete customer._id
+
+    const customerUpdate = await mongo
+      .collection<MongoCustomer>('customers')
+      .findOneAndUpdate(
+        { _id: parseId },
+        { $set: customer },
+        { returnDocument: 'after' }
+      )
+
+    return customerUpdate.value
   }
 
   async deleteCustomer(id: string): Promise<Document | null> {

@@ -17,3 +17,15 @@ export interface ICustomer {
 export interface MongoCustomer extends WithId<Document>, ICustomer {
   _id: ObjectId
 }
+
+export interface ICustomerUpdate {
+  _id?: string
+  phone: string
+  address: {
+    cep: string
+    city: string
+    district: string
+    street: string
+    number: string
+  }
+}

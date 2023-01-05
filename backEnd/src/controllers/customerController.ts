@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import customerService from '../services/customerService'
-import { ICustomer } from '../types/customerType'
+import { ICustomer, ICustomerUpdate } from '../types/customerType'
 
 class CustomerController {
   async getOneById(req: Request, res: Response) {
@@ -23,6 +23,14 @@ class CustomerController {
     const customerId = await customerService.addCustomer(customer)
 
     return res.status(201).send({ id: customerId })
+  }
+
+  async update(req: Request, res: Response) {
+    const customer: ICustomerUpdate = req.body
+
+    const customerUpdate = await customerService.updateCustomer(customer)
+
+    return res.status(200).send(customerUpdate)
   }
 
   async remove(req: Request, res: Response) {

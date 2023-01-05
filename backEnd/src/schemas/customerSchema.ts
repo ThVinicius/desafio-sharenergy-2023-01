@@ -23,4 +23,17 @@ const add = joi.object({
 
 const id = joi.object({ id: joi.string().trim().required() })
 
-export default { add, id }
+const update = joi.object({
+  _id: joi.string().trim().required(),
+  phone: joi.string().pattern(phoneRegex).required(),
+  address: joi.object({
+    cep: joi.string().pattern(cepRegex).required(),
+    state: joi.string().length(2).required(),
+    city: joi.string().required(),
+    district: joi.string().trim().required(),
+    street: joi.string().trim().required(),
+    number: joi.string().trim().required()
+  })
+})
+
+export default { add, id, update }

@@ -23,6 +23,12 @@ route.post(
   customerController.addCustomer
 )
 
+route.patch(
+  '/customers',
+  schemaValidator(customerSchema.update),
+  customerController.update
+)
+
 route.delete(
   '/customers/:id',
   schemaValidator(customerSchema.id, isParams),

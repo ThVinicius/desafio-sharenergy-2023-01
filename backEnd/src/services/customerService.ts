@@ -1,5 +1,5 @@
 import customerRepository from '../databases/repositories/customerRepository'
-import { ICustomer } from '../types/customerType'
+import { ICustomer, ICustomerUpdate } from '../types/customerType'
 import { notFound } from '../utils/throwError'
 
 class CustomerService {
@@ -19,6 +19,14 @@ class CustomerService {
     const customerId = await customerRepository.add(customer)
 
     return customerId
+  }
+
+  async updateCustomer(customer: ICustomerUpdate) {
+    const findCustomer = await this.getOneById(customer._id!)
+
+    if (!findCustomer) notFound('Cliente não encontrado!')
+
+    return await customerRepository.update(customer)
   }
 
   async deleteCustomer(id: string) {
