@@ -4,14 +4,7 @@ import { mongo } from '../mongo'
 
 class MongoUserRepository implements UserRepository {
   async findByUsername(username: string): Promise<IUser | null> {
-    await mongo.connect()
-
-    const user = await mongo
-      .db()
-      .collection<IUser>('users')
-      .findOne({ username })
-
-    mongo.close()
+    const user = await mongo.collection<IUser>('users').findOne({ username })
 
     return user
   }

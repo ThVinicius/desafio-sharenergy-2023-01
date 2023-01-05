@@ -1,4 +1,4 @@
-import { MongoClient, ObjectId } from 'mongodb'
+import { MongoClient, ObjectId, Db } from 'mongodb'
 import dotenv from 'dotenv'
 import bcrypt from 'bcrypt'
 import { randomUsers, customers } from './seeds/data'
@@ -6,29 +6,25 @@ import { randomUsers, customers } from './seeds/data'
 dotenv.config()
 
 export class MongoConfig {
-  mongo: MongoClient
+  mongo: Db
   objectId: ObjectId
   MONGO_URI: string
 
   constructor() {
     this.MONGO_URI = process.env.MONGO_URI!
-    this.mongo = new MongoClient(this.MONGO_URI!)
+    this.mongo = new MongoClient(this.MONGO_URI!).db()
     this.objectId = new ObjectId()
   }
 
   async seed() {
-    await this.mongo.connect()
-
     const username = 'desafiosharenergy'
 
     const findUsername = await this.mongo
-      .db()
       .collection('users')
       .findOne({ username })
 
     if (!findUsername) {
       await this.mongo
-        .db()
         .collection('users')
         .createIndex({ username: 1 }, { unique: true })
 
@@ -37,38 +33,28 @@ export class MongoConfig {
       let password = 'sh@r3n3rgy'
       password = bcrypt.hashSync(password, saltRounds)
 
-      await this.mongo
-        .db()
-        .collection('users')
-        .insertOne({ username, password })
+      await this.mongo.collection('users').insertOne({ username, password })
     }
 
-    const findRandomUser = await this.mongo
-      .db()
-      .collection('randomUsers')
-      .findOne()
+    const findRandomUser = await this.mongo.collection('randomUsers').findOne()
 
     if (!findRandomUser) {
-      await this.mongo.db().collection('randomUsers').insertMany(randomUsers())
+      await this.mongo.collection('randomUsers').insertMany(randomUsers())
     }
 
-    const findCustomer = await this.mongo.db().collection('customers').findOne()
+    const findCustomer = await this.mongo.collection('customers').findOne()
 
     if (!findCustomer) {
       await this.mongo
-        .db()
         .collection('customers')
         .createIndex({ email: 1 }, { unique: true })
 
       await this.mongo
-        .db()
         .collection('customers')
         .createIndex({ cpf: 1 }, { unique: true })
 
-      await this.mongo.db().collection('customers').insertMany(customers)
+      await this.mongo.collection('customers').insertMany(customers)
     }
-
-    await this.mongo.close()
   }
 }
 

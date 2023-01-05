@@ -10,10 +10,7 @@ interface IProps extends WithId<Document>, IUsersRandom {
 
 class MongoUsersRandomRepository implements UsersRandomRepository {
   async getAll(): Promise<IUsersRandom[]> {
-    await mongo.connect()
-
     const mongoUsers = await mongo
-      .db()
       .collection<IProps>('randomUsers')
       .find()
       .toArray()
