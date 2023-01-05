@@ -5,16 +5,16 @@ import DialogActions from '@mui/material/DialogActions'
 import DialogContent from '@mui/material/DialogContent'
 import DialogContentText from '@mui/material/DialogContentText'
 import DialogTitle from '@mui/material/DialogTitle'
-import Transition from '../../../components/modalTransition/Transition'
-import useDeleteCustomer from '../../../hooks/api/useDeleteCustomer'
-import { ICustomer } from '../../../types/Customers'
+import Transition from '../modalTransition/Transition'
+import useDeleteCustomer from '../../hooks/api/useDeleteCustomer'
+import { ICustomer } from '../../types/Customers'
 
 interface IProps {
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
   name: string
   _id: string
-  setCustomers: React.Dispatch<React.SetStateAction<ICustomer[] | null>>
+  setCustomers?: React.Dispatch<React.SetStateAction<ICustomer[] | null>>
 }
 
 const DeleteModal: React.FC<IProps> = props => {
