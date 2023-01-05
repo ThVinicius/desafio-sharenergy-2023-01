@@ -2825,43 +2825,43 @@ export const customers = [
   {
     name: 'Jason Perry',
     email: 'jason.perry@example.com',
-    fone: '18981664852',
+    phone: '(18)9.8166-4852',
     address: {
-      cep: '30130005',
-      state: 'Minas Gerais',
+      cep: '30130-005',
+      state: 'MG',
       city: 'Belo Horizonte',
       district: 'Boa Viagem',
       street: 'Avenida Afonso Pena',
       number: '1025'
     },
-    cpf: '21712420003'
+    cpf: '217.124.200-03'
   },
   {
     name: 'Gonzaga Rocha',
     email: 'gonzaga.rocha@example.com',
-    fone: '5141906899',
+    phone: '(51) 4190-6899',
     address: {
-      cep: '09961660',
-      state: 'São Paulo',
+      cep: '09961-660',
+      state: 'SP',
       city: 'Diadema',
       district: 'Casa Grande',
       street: 'Rua Barão de Vitória',
       number: '4416'
     },
-    cpf: '73268821508'
+    cpf: '732.688.215-08'
   },
   {
     name: 'Armando Freitas',
     email: 'armando.freitas@example.com',
-    fone: '8761571293',
+    phone: '(87) 6157-1293',
     address: {
-      cep: '20040002',
-      state: 'Rio de Janeiro',
+      cep: '20040-002',
+      state: 'RJ',
       city: 'Rio de Janeiro',
       district: 'Centro',
       street: 'Avenida Rio Branco',
       number: '1416'
     },
-    cpf: '19680369209'
+    cpf: '196.803.692-09'
   }
 ]
