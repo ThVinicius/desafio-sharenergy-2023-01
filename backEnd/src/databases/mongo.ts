@@ -58,11 +58,6 @@ export class MongoConfig {
       await this.mongo
         .db()
         .collection('customers')
-        .createIndex({ name: 1 }, { unique: true })
-
-      await this.mongo
-        .db()
-        .collection('customers')
         .createIndex({ email: 1 }, { unique: true })
 
       await this.mongo
