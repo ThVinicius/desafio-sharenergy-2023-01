@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  mongo-db:
+    container_name: mongo-db
+    image: mongo:4.4.2-bionic
+    environment:
+      - PUID=1000
+      - PGID=1000
+    restart: always
+    ports:
+      - 6022:27017
+    volumes:
+      - db:/var/lib/mongodb/data
+
+  node-back-end:
+    container_name: node-back-end
+    build: ./backEnd
+    restart: always
+    ports:
+      - 5000:5000
+    depends_on:
+      - mongo-db
+    env_file:
+      - ./backEnd/.env.development
+
+  react-front-end:
+    container_name: react-front-end
+    build: ./frontEnd
+    volumes:
+      - build_react:/var/www/html
+
+  nginx:
+    container_name: nginx
+    build: ./frontEnd/nginx
+    ports:
+      - 80:80
+    volumes:
+      - build_react:/var/www/html
+    depends_on:
+      - mongo-db
+      - node-back-end
+      - react-front-end
+
+volumes:
+  db:
+  build_react:
