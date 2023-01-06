@@ -6,10 +6,10 @@ import { Container, Image } from './contentStyle'
 const Content: FC = () => {
   const [URL, setURL] = useState('https://http.cat/200.jpg')
   const imgRef = useRef<HTMLImageElement>(null)
-  const { loginPersistence } = usePersistence()
+  const { authPersistence } = usePersistence()
 
   useEffect(() => {
-    loginPersistence()
+    authPersistence()
   }, [])
 
   return (

@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useToken } from '../context/useToken'
@@ -6,16 +7,30 @@ export default function usePersistence() {
   const { token, setToken } = useToken()
   const navigate = useNavigate()
 
-  const loginPersistence = () => {
-    const stringfyToken = localStorage.getItem('token')
-
+  const storageToken = useMemo(() => {
     let storageToken: string | null = null
+
+    const stringfyToken = localStorage.getItem('token')
 
     if (token === null && stringfyToken !== null) {
       storageToken = JSON.parse(stringfyToken)
 
       setToken(storageToken)
+
+      return storageToken
     }
+  }, [])
+
+  const authPersistence = () => {
+    // const stringfyToken = localStorage.getItem('token')
+
+    // let storageToken: string | null = null
+
+    // if (token === null && stringfyToken !== null) {
+    //   storageToken = JSON.parse(stringfyToken)
+
+    //   setToken(storageToken)
+    // }
 
     if (token === null && storageToken === null) {
       toast.error('É necessário estar logado para acessar essa rota!', {
@@ -35,5 +50,9 @@ export default function usePersistence() {
     return token || storageToken
   }
 
-  return { loginPersistence }
+  const loginPersistence = () => {
+    if (token || storageToken) navigate('/users')
+  }
+
+  return { authPersistence, loginPersistence }
 }

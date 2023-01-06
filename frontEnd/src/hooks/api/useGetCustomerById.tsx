@@ -8,11 +8,11 @@ import usePersistence from '../usePersistence'
 export default function useGetCustomerById(id: string) {
   const [customer, setCustomer] = useState<ICustomer | null>(null)
   const [loadingCustomerById, setLoadingCustomerById] = useState(true)
-  const { loginPersistence } = usePersistence()
+  const { authPersistence } = usePersistence()
   const navigate = useNavigate()
 
   useEffect(() => {
-    const token = loginPersistence()
+    const token = authPersistence()
 
     if (typeof token === 'string') {
       const URL = `${import.meta.env.VITE_BASE_URL}/customers/${id}`

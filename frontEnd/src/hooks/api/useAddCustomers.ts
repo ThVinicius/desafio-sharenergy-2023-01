@@ -8,10 +8,10 @@ type IInputs = Dispatch<SetStateAction<string>>[]
 
 export default function useAddCustomers(inputsClear: IInputs) {
   const [loadingAddCustomers, setLoadingAddCustomers] = useState(false)
-  const { loginPersistence } = usePersistence()
+  const { authPersistence } = usePersistence()
 
   const addCustomers = (customer: ICustomer) => {
-    const token = loginPersistence()
+    const token = authPersistence()
 
     if (typeof token === 'string') {
       setLoadingAddCustomers(true)
@@ -40,12 +40,16 @@ export default function useAddCustomers(inputsClear: IInputs) {
           })
         })
         .catch(({ response }) => {
-          let renderToast: string
+          const data = response.data as string | string[]
+
+          let renderToast = ''
 
           switch (response.status) {
             case 400:
             case 409:
-              renderToast = response.data
+              if (typeof data === 'string') renderToast = data
+              else data.map((err: string) => (renderToast += err + '; '))
+
               break
 
             default:

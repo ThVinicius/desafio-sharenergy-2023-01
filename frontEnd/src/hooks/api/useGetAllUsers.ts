@@ -6,10 +6,10 @@ import usePersistence from '../usePersistence'
 export default function useGetAllUsers() {
   const [allUsers, setAllUsers] = useState<IUser[] | null>(null)
   const [loadingAllUsers, setLoadingAllUsers] = useState(true)
-  const { loginPersistence } = usePersistence()
+  const { authPersistence } = usePersistence()
 
   useEffect(() => {
-    const token = loginPersistence()
+    const token = authPersistence()
 
     if (typeof token === 'string') {
       const URL = `${import.meta.env.VITE_BASE_URL}/random-users`

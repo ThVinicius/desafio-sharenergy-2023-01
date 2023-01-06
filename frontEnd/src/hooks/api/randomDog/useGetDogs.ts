@@ -5,7 +5,7 @@ import usePersistence from '../../usePersistence'
 export default function useGetDogs() {
   const [dog, setDog] = useState({ url: '', extension: '' })
   const [loadingGetDog, setLoadingGetDog] = useState(false)
-  const { loginPersistence } = usePersistence()
+  const { authPersistence } = usePersistence()
 
   const getRandomDog = () => {
     setLoadingGetDog(true)
@@ -28,7 +28,7 @@ export default function useGetDogs() {
   }
 
   useEffect(() => {
-    const token = loginPersistence()
+    const token = authPersistence()
 
     if (typeof token === 'string') getRandomDog()
   }, [])

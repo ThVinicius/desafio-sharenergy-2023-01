@@ -12,10 +12,10 @@ type IInputs = Dispatch<SetStateAction<{ value: string; newValue: string }>>[]
 
 function useUpdateCustomer(setEdit: ISetEdit, inputs: IInputs) {
   const [loadingUpdateCustomer, setLoadingUpdateCustomer] = useState(false)
-  const { loginPersistence } = usePersistence()
+  const { authPersistence } = usePersistence()
 
   const update = (customer: IUpdateCustomer) => {
-    const token = loginPersistence()
+    const token = authPersistence()
 
     if (typeof token === 'string') {
       setLoadingUpdateCustomer(true)

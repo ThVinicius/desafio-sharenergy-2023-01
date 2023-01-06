@@ -11,11 +11,11 @@ type ISetOpen = Dispatch<SetStateAction<boolean>>
 
 export default function useDeleteCustomer(setOpen: ISetOpen) {
   const [loadingDelCustomer, setLoadingDelCustomer] = useState(true)
-  const { loginPersistence } = usePersistence()
+  const { authPersistence } = usePersistence()
   const navigate = useNavigate()
 
   const deleteCustomer = (id: string, setCustomers?: ISetCustomer) => {
-    const token = loginPersistence()
+    const token = authPersistence()
 
     if (typeof token === 'string') {
       const toastId = toast.loading('Requisição em andamento...')

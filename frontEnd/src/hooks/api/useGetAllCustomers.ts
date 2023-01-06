@@ -6,10 +6,10 @@ import { ICustomer } from '../../types/Customers'
 export default function useGetAllCustomers() {
   const [customers, setCustomers] = useState<ICustomer[] | null>(null)
   const [loadingGetAllCustomers, setLoadingGetAllCustomers] = useState(true)
-  const { loginPersistence } = usePersistence()
+  const { authPersistence } = usePersistence()
 
   useEffect(() => {
-    const token = loginPersistence()
+    const token = authPersistence()
 
     if (typeof token === 'string') {
       const URL = `${import.meta.env.VITE_BASE_URL}/customers`
