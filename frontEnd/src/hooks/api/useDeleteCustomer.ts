@@ -10,7 +10,7 @@ type ISetCustomer = Dispatch<SetStateAction<ICustomer[] | null>>
 type ISetOpen = Dispatch<SetStateAction<boolean>>
 
 export default function useDeleteCustomer(setOpen: ISetOpen) {
-  const [loadingDelCustomer, setLoadingDelCustomer] = useState(true)
+  const [loadingDelCustomer, setLoadingDelCustomer] = useState(false)
   const { authPersistence } = usePersistence()
   const navigate = useNavigate()
 
@@ -18,6 +18,8 @@ export default function useDeleteCustomer(setOpen: ISetOpen) {
     const token = authPersistence()
 
     if (typeof token === 'string') {
+      setLoadingDelCustomer(true)
+
       const toastId = toast.loading('Requisição em andamento...')
 
       const URL = `${import.meta.env.VITE_BASE_URL}/customers/${id}`
