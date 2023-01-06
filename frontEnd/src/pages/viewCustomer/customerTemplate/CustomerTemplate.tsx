@@ -16,6 +16,10 @@ const CustomerTemplate: FC<ICustomer> = props => {
     value: props.phone,
     newValue: props.phone
   })
+  const [email, setEmail] = useState({
+    value: props.email,
+    newValue: props.email
+  })
   const [cep, setCep] = useState({
     value: props.address.cep,
     newValue: props.address.cep
@@ -56,6 +60,7 @@ const CustomerTemplate: FC<ICustomer> = props => {
   const save = () => {
     const customer = {
       _id: props._id!,
+      email: email.newValue,
       phone: phone.newValue,
       address: {
         cep: cep.newValue,
@@ -78,12 +83,21 @@ const CustomerTemplate: FC<ICustomer> = props => {
         <h6>{props.name}</h6>
       </Info>
       <Info>
-        <h5>Email</h5>
-        <h6>{props.email}</h6>
-      </Info>
-      <Info>
         <h5>CPF</h5>
         <h6>{props.cpf}</h6>
+      </Info>
+      <Info>
+        <h5>Email</h5>
+        <EditField
+          edit={edit}
+          label="Email"
+          type="email"
+          disabled={loadingUpdateCustomer}
+          value={email.newValue}
+          onChange={e =>
+            setEmail(prev => ({ ...prev, newValue: e.target.value }))
+          }
+        />
       </Info>
       <Info>
         <h5>Telefone</h5>
