@@ -10,14 +10,16 @@ const add = joi.object({
   name: joi.string().trim().required(),
   email: joi.string().email().required(),
   phone: joi.string().pattern(phoneRegex).required(),
-  address: joi.object({
-    cep: joi.string().pattern(cepRegex).required(),
-    state: joi.string().length(2).required(),
-    city: joi.string().required(),
-    district: joi.string().trim().required(),
-    street: joi.string().trim().required(),
-    number: joi.string().trim().required()
-  }),
+  address: joi
+    .object({
+      cep: joi.string().pattern(cepRegex).required(),
+      state: joi.string().length(2).required(),
+      city: joi.string().trim().required(),
+      district: joi.string().trim().required(),
+      street: joi.string().trim().required(),
+      number: joi.string().trim().required()
+    })
+    .required(),
   cpf: joi.string().pattern(cpfRegex).required()
 })
 
