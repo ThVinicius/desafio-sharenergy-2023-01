@@ -477,8 +477,11 @@ Enviar o token (Bearer token)
 # Rodar testes
 
 - Vá para o diretório do `backEnd` e rode o comando de teste
-  - `npm run test` - testes realizados: testes de integração
-    -Vá para o diretório do `frontEnd` e rode o comando de teste
+
+  - `npm run test`
+    - testes realizados: testes de integração
+
+- Vá para o diretório do `frontEnd` e rode o comando de teste
   - `npx cypress open`
     - testes realizados: testes de ponta a ponta (e2e)
 
