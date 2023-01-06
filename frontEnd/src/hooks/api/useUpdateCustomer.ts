@@ -42,6 +42,7 @@ function useUpdateCustomer(setEdit: ISetEdit, inputs: IInputs) {
           switch (response.status) {
             case 400:
             case 404:
+            case 409:
               if (typeof data === 'string') errorRender = data
               else data.map((err: string) => (errorRender += err + '; '))
 
