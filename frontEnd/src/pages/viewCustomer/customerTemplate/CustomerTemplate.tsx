@@ -38,6 +38,7 @@ const CustomerTemplate: FC<ICustomer> = props => {
     newValue: props.address.district
   })
   const { update, loadingUpdateCustomer } = useUpdateCustomer(setEdit, [
+    setEmail,
     setPhone,
     setCep,
     setStreet,
@@ -48,7 +49,14 @@ const CustomerTemplate: FC<ICustomer> = props => {
   const cancel = () => {
     if (loadingUpdateCustomer) return
 
-    const inputs = [setPhone, setCep, setStreet, setNumber, setDistrict]
+    const inputs = [
+      setEmail,
+      setPhone,
+      setCep,
+      setStreet,
+      setNumber,
+      setDistrict
+    ]
 
     inputs.map(setInput =>
       setInput(prev => ({ ...prev, newValue: prev.value }))
