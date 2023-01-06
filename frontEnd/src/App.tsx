@@ -12,6 +12,7 @@ import Cats from './pages/cats/Index'
 import Dogs from './pages/dogs/Index'
 import Customers from './pages/customers/Index'
 import AddCustomers from './pages/addCustomers/Index'
+import ViewCustomer from './pages/viewCustomer/Index'
 
 const App: FC = () => {
   return (
@@ -28,6 +29,10 @@ const App: FC = () => {
           <Route path="/dogs" element={<Dogs />} />
           <Route path="/customers" element={<Customers />} />
           <Route path="/customers/add" element={<AddCustomers />} />
+          <Route
+            path="/customers/view/:customerId"
+            element={<ViewCustomer />}
+          />
         </Routes>
       </TokenProvider>
     </BrowserRouter>

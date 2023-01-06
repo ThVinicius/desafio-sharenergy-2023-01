@@ -9,7 +9,14 @@ import customer from '../../assets/images/service.png'
 import logoutIcon from '../../assets/images/logout.png'
 import useLogout from '../../hooks/useLogout'
 
-const paths = ['/users', '/cats', '/dogs', '/customers', '/customers/add']
+const paths = [
+  { value: '/users', isRegex: false },
+  { value: '/cats', isRegex: false },
+  { value: '/dogs', isRegex: false },
+  { value: '/customers', isRegex: false },
+  { value: '/customers/add', isRegex: false },
+  { value: /[/]customers[/]view[/].+/, isRegex: true }
+]
 
 const Header: FC = () => {
   const { isPath } = usePath(paths)

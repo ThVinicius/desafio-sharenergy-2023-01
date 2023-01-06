@@ -1,4 +1,5 @@
 import { Dispatch, SetStateAction, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { ICustomer } from '../../types/Customers'
 import usePersistence from '../usePersistence'
@@ -11,8 +12,9 @@ type ISetOpen = Dispatch<SetStateAction<boolean>>
 export default function useDeleteCustomer(setOpen: ISetOpen) {
   const [loadingDelCustomer, setLoadingDelCustomer] = useState(true)
   const { loginPersistence } = usePersistence()
+  const navigate = useNavigate()
 
-  const deleteCustomer = (id: string, setCustomers: ISetCustomer) => {
+  const deleteCustomer = (id: string, setCustomers?: ISetCustomer) => {
     const token = loginPersistence()
 
     if (typeof token === 'string') {
@@ -26,7 +28,9 @@ export default function useDeleteCustomer(setOpen: ISetOpen) {
 
       promise
         .then(() => {
-          setCustomers(prev => prev!.filter(customer => customer._id !== id))
+          if (setCustomers) {
+            setCustomers(prev => prev!.filter(customer => customer._id !== id))
+          }
 
           toast.update(toastId, {
             render: 'Cliente deletado com sucesso! 👌',
@@ -40,6 +44,8 @@ export default function useDeleteCustomer(setOpen: ISetOpen) {
           })
 
           setOpen(false)
+
+          if (!setCustomers) navigate('/customers')
         })
         .catch(({ response }) => {
           let renderToast: string

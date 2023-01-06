@@ -1,8 +1,9 @@
 import { Dispatch, FC, SetStateAction, useState } from 'react'
+import { Link } from 'react-router-dom'
 import Button from '@mui/material/Button'
 import { ICustomer } from '../../../types/Customers'
-import { ButtonsBox, Container, Info } from './CustomerTemplateStyle'
-import DeleteModal from '../deleteModal/DeleteModal'
+import { ButtonsBox, Container, Info } from './customerTemplateStyle'
+import DeleteModal from '../../../components/deleteModal/DeleteModal'
 
 interface IProps extends ICustomer {
   setCustomers: Dispatch<SetStateAction<ICustomer[] | null>>
@@ -15,7 +16,9 @@ const CustomerTemplate: FC<IProps> = props => {
     <>
       <Container>
         <ButtonsBox>
-          <Button variant="contained">Vizualizar</Button>
+          <Link to={`/customers/view/${props._id}`}>
+            <Button variant="contained">Vizualizar</Button>
+          </Link>
           <Button
             onClick={() => setOpen(true)}
             variant="contained"
