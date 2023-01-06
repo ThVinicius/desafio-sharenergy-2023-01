@@ -20,6 +20,7 @@ export interface MongoCustomer extends WithId<Document>, ICustomer {
 
 export interface ICustomerUpdate {
   _id?: string
+  email: string
   phone: string
   address: {
     cep: string

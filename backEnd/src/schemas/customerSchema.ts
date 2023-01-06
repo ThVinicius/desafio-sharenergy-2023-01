@@ -25,6 +25,7 @@ const id = joi.object({ id: joi.string().trim().required() })
 
 const update = joi.object({
   _id: joi.string().trim().required(),
+  email: joi.string().email().required(),
   phone: joi.string().pattern(phoneRegex).required(),
   address: joi.object({
     cep: joi.string().pattern(cepRegex).required(),
