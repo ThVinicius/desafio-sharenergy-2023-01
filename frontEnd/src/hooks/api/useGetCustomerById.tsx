@@ -24,11 +24,16 @@ export default function useGetCustomerById(id: string) {
       promise
         .then(({ data }) => setCustomer(data))
         .catch(({ response }) => {
-          let errorRender: string
+          const data = response.data as string | string[]
+
+          let errorRender = ''
 
           switch (response.status) {
+            case 400:
             case 404:
-              errorRender = response.data
+              if (typeof data === 'string') errorRender = data
+              else data.map((err: string) => (errorRender += err + '; '))
+
               break
 
             default:
