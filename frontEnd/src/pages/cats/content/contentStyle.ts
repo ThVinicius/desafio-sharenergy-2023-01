@@ -14,6 +14,11 @@ const Container = styled.div`
 const Image = styled.img`
   width: 600px;
   height: 600px;
+
+  @media (max-width: 940px) {
+    width: 85vw;
+    height: 50vh;
+  }
 `
 
 export { Container, Image }

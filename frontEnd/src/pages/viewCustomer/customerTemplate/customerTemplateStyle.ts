@@ -10,6 +10,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
+
+  @media (max-width: 940px) {
+    width: 100%;
+  }
 `
 
 const Info = styled.div`
@@ -37,10 +41,14 @@ const Address = styled.div`
   h4 {
     font: normal 700 20px 'Lexend Deca', sans-serif;
   }
+
+  @media (max-width: 940px) {
+    gap: 7px;
+  }
 `
 
 const AddressBox = styled.div`
-  width: 50%;
+  width: 48%;
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -23,7 +23,7 @@ const Input: FC<IProps> = ({
   onChange
 }) => {
   return (
-    <FormControl sx={{ width: '30%' }}>
+    <FormControl>
       <InputLabel required>{label}</InputLabel>
       <OutlinedInput
         type={type || 'text'}

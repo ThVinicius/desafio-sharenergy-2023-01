@@ -9,6 +9,10 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   gap: 20px;
+
+  @media (max-width: 940px) {
+    width: 100%;
+  }
 `
 
 export { Container }
