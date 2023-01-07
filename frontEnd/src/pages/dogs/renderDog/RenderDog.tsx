@@ -15,12 +15,12 @@ const RenderDog: FC<IProps> = ({ dog, loadingGetDog }) => {
     switch (dog.extension) {
       case 'mp4':
       case 'webm':
-        setRender(<Video autoPlay loop src={dog.url} />)
+        setRender(<Video autoPlay loop src={dog.url} key={dog.url} />)
 
         break
 
       default:
-        setRender(<Image src={dog.url} alt="random dog" />)
+        setRender(<Image src={dog.url} alt="random dog" key={dog.url} />)
 
         break
     }
