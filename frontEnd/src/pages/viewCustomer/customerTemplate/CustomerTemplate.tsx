@@ -105,6 +105,7 @@ const CustomerTemplate: FC<ICustomer> = props => {
           onChange={e =>
             setEmail(prev => ({ ...prev, newValue: e.target.value }))
           }
+          dataCy="input-email"
         />
       </Info>
       <Info>

@@ -56,6 +56,7 @@ const Form: FC = () => {
             focus={true}
             value={name}
             onChange={e => setName(e.target.value)}
+            dataCy="input-name"
           />
           <Input
             type="email"
@@ -63,24 +64,28 @@ const Form: FC = () => {
             label="Email"
             value={email}
             onChange={e => setEmail(e.target.value)}
+            dataCy="input-email"
           />
           <Input
             label="Telefone"
             disabled={loadingAddCustomers}
             value={phone}
             onChange={e => phoneMaskOnChange(e, setPhone)}
+            dataCy="input-phone"
           />
           <Input
             label="CPF"
             disabled={loadingAddCustomers}
             value={cpf}
             onChange={e => cpfMaskOnChange(e, setCpf)}
+            dataCy="input-cpf"
           />
           <Input
             label="CEP"
             disabled={loadingAddCustomers}
             value={cep}
             onChange={e => cepMaskOnChange(e, setCep)}
+            dataCy="input-cep"
           />
           <Input label="Estado" value={state} disabled={true} />
           <Input label="Cidade" value={city} disabled={true} />
@@ -89,18 +94,21 @@ const Form: FC = () => {
             disabled={loadingAddCustomers}
             value={district}
             onChange={e => setDistrict(e.target.value)}
+            dataCy="input-district"
           />
           <Input
             label="Rua"
             disabled={loadingAddCustomers}
             value={street}
             onChange={e => setStreet(e.target.value)}
+            dataCy="input-street"
           />
           <Input
             label="Número"
             disabled={loadingAddCustomers}
             value={number}
             onChange={e => setNumber(e.target.value)}
+            dataCy="input-number"
           />
         </InputsBox>
         <BtnBox>

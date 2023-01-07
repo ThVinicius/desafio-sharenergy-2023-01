@@ -21,7 +21,7 @@ const Buttons: FC<IProps> = ({ edit, setEdit, setOpen, save, cancel }) => {
     <ButtonsBox>
       {edit ? (
         <>
-          <Button variant="contained" onClick={save}>
+          <Button variant="contained" onClick={save} data-cy="btn-save">
             Salvar
           </Button>
           <Button onClick={handleCancel} variant="contained" color="error">
@@ -30,7 +30,11 @@ const Buttons: FC<IProps> = ({ edit, setEdit, setOpen, save, cancel }) => {
         </>
       ) : (
         <>
-          <Button variant="contained" onClick={() => setEdit(true)}>
+          <Button
+            variant="contained"
+            onClick={() => setEdit(true)}
+            data-cy="btn-edit"
+          >
             Editar
           </Button>
           <Button

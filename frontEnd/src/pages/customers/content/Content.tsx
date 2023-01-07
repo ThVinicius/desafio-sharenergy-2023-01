@@ -13,7 +13,7 @@ const Content: FC = () => {
 
   return (
     <Container>
-      <Link to="/customers/add">
+      <Link to="/customers/add" data-cy="btn-add-customers">
         <Button
           variant="contained"
           color="info"

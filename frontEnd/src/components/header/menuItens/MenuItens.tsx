@@ -10,9 +10,10 @@ interface IProps {
     | { value: RegExp; isRegex: boolean }
   image: string
   setOpen?: Dispatch<SetStateAction<boolean>>
+  dataCy?: string
 }
 
-const MenuItens: FC<IProps> = ({ item, path, image, setOpen }) => {
+const MenuItens: FC<IProps> = ({ item, path, image, setOpen, dataCy }) => {
   const { isPath } = usePath([path])
   const [color, setColor] = useState('#000')
   const navigate = useNavigate()
@@ -29,7 +30,7 @@ const MenuItens: FC<IProps> = ({ item, path, image, setOpen }) => {
   }
 
   return (
-    <BoxItens onClick={redirect}>
+    <BoxItens data-cy={dataCy} onClick={redirect}>
       <Itens color={color}>{item}</Itens>
       <img src={image} alt="Images do menu" />
     </BoxItens>

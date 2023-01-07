@@ -11,6 +11,7 @@ interface IProps {
   onChange?:
     | ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
     | undefined
+  dataCy?: string
 }
 
 const EditField: FC<IProps> = props => {
@@ -21,6 +22,7 @@ const EditField: FC<IProps> = props => {
       onChange={props.onChange}
       focus={props.focus}
       disabled={props.disabled}
+      dataCy={props.dataCy}
     />
   ) : (
     <h6>{props.value}</h6>

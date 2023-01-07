@@ -16,7 +16,10 @@ const CustomerTemplate: FC<IProps> = props => {
     <>
       <Container>
         <ButtonsBox>
-          <Link to={`/customers/view/${props._id}`}>
+          <Link
+            to={`/customers/view/${props._id}`}
+            data-cy={`customer-email:${props.email}`}
+          >
             <Button variant="contained">Vizualizar</Button>
           </Link>
           <Button

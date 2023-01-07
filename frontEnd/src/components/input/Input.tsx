@@ -12,6 +12,7 @@ interface IProps {
   onChange?:
     | ChangeEventHandler<HTMLInputElement | HTMLTextAreaElement>
     | undefined
+  dataCy?: string
 }
 
 const Input: FC<IProps> = ({
@@ -20,7 +21,8 @@ const Input: FC<IProps> = ({
   disabled,
   label,
   value,
-  onChange
+  onChange,
+  dataCy
 }) => {
   return (
     <FormControl>
@@ -33,6 +35,7 @@ const Input: FC<IProps> = ({
         label={label}
         value={value}
         onChange={onChange}
+        data-cy={dataCy}
       />
     </FormControl>
   )

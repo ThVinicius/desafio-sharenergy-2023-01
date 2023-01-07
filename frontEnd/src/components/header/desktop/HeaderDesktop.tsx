@@ -21,7 +21,12 @@ const HeaderDesktop: FC<IProps> = ({ logout, paths, imgs }) => {
         <MenuItens item="Usuários" path={paths[0]} image={imgs[0]} />
         <MenuItens item="Cats" path={paths[1]} image={imgs[1]} />
         <MenuItens item="Dogs" path={paths[2]} image={imgs[2]} />
-        <MenuItens item="Clientes" path={paths[3]} image={imgs[3]} />
+        <MenuItens
+          item="Clientes"
+          path={paths[3]}
+          image={imgs[3]}
+          dataCy="btn-customers"
+        />
         <Logout {...{ imgs, logout }} />
       </Menu>
     </>
