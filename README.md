@@ -14,6 +14,8 @@
   <img src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB" height="30px"/>
   <img src="https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens" height="30px"/>
   <img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white" height="30px"/>
+  <img src="https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white" height="30px"/>
+  <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" height="30px"/>
 
   <!-- Badges source: https://dev.to/envoy_/150-badges-for-github-pnk -->
 </div>
@@ -34,6 +36,7 @@
     - [Atualizar as informações de um cliente](#update-customers)
     - [Deletar um cliente](#delete-customers)
 - [Rodar localmente](#run)
+- [Rodar com Docker](#run-docker)
 - [Rodar os testes](#tests)
 - [Descrição do desafio](#challenge)
 
@@ -52,6 +55,10 @@
 ### Acessar uma conta
 
 Rota para acessar uma conta. Retorna um token JWT em caso de sucesso.
+
+- Usuário cadastrado
+  - username: desafiosharenergy
+  - password: sh@r3n3rgy
 
 ```http
 POST /sign-in
@@ -472,18 +479,49 @@ Enviar o token (Bearer token)
 
 #
 
+<div id='run-docker'/>
+
+# Rodar com Docker
+
+- Vá para o diretório do projeto (onde se encontra o arquivo `docker-compose.yml`)
+- Rode o comando:
+
+```bash
+docker-compose up --build -d
+```
+
+- Para derrubar o servidor rode o comando:
+
+```bash
+docker-compose down
+```
+
+- Observações
+  - A porta do aplicativo é a 80 (`http://localhost:80`)
+  - Os testes e2e são realizados na porta 5173, logo não é possivel rodar eles com docker
+
 <div id='tests'/>
 
 # Rodar testes
 
+## Testes do backEnd
+
 - Vá para o diretório do `backEnd` e rode o comando de teste
 
   - `npm run test`
-    - testes realizados: testes de integração
 
+- testes realizados: testes de integração
+
+## Testes do frontEnd
+
+- Vá para o diretório do `backEnd` e inicialize-o (`npm run dev`)
+- Vá para o diretório do `frontEnd` e inicialize-o (`npm run dev`)
 - Vá para o diretório do `frontEnd` e rode o comando de teste
   - `npx cypress open`
-    - testes realizados: testes de ponta a ponta (e2e)
+    - escolha o E2E testing
+    - escolha uma plataforma
+    - escolha um arquivo para vizualizar os tests feitos nele
+- testes realizados: testes de ponta a ponta (e2e)
 
 #
 
