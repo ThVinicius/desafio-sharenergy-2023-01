@@ -28,6 +28,12 @@
 # Sumário
 
 - [Link deploy](#deploy)
+- [Páginas do FrontEnd](#front-end)
+  - [Login](#front-end-login)
+  - [Usuários](#front-end-users)
+  - [Cats](#front-end-cats)
+  - [Dogs](#front-end-dogs)
+  - [Clientes](#front-end-customers)
 - [Documentação das rotas da API](#api)
   - [Rota de autenticação](#auth-routes)
     - [Acessar uma conta](#sign-in)
@@ -54,6 +60,122 @@
 
 - Deploy realizado na AWS, utilizando Docker e EC2
 - Implementado um workflow para atualizar o deploy a cada push realizado na branch vinicius-pacheco-dos-santos
+
+#
+
+<div id='front-end'/>
+
+# Páginas do FrontEnd
+
+O layout foi feito para telas de desktop e de mobile.
+
+<div id='front-end-login'/>
+
+## Login
+
+Página para poder acessar a aplicação
+
+- Usuário cadastrado:
+  - username: desafiosharenergy
+  - password: sh@r3n3rgy
+
+<table>
+  <tr>
+    <td valign="top"><img src="./.github/assets/login.gif"/></td>
+    <td valign="top"><img src="./.github/assets/login-mobile.gif"/></td>
+  </tr>
+</table>
+
+#
+
+<div id='front-end-users'/>
+
+## Usuários
+
+Nessa pagina é possivel:
+
+- Vizualizar 50 usuários da api [Random User](https://randomuser.me/) com a seed `desafio`
+  - Cada página possui 10 usuários, a cada mudança de página é feito um request para a API [Random User](https://randomuser.me/)
+- Filtrar esses 50 usuários por nome, username e email
+
+<table>
+  <tr>
+    <td valign="top"><img src="./.github/assets/users.gif"/></td>
+    <td valign="top"><img src="./.github/assets/users-mobile.gif"/></td>
+  </tr>
+</table>
+
+#
+
+<div id='front-end-cats'/>
+
+## Cats
+
+Nessa pagina é possivel:
+
+- Buscar uma imagem reference ao status code HTTP da API [HTTP Cat](https://http.cat/)
+  - Caso não seja encontrado o status code, será renderizado uma imagem de status code 404
+
+<table>
+  <tr>
+    <td valign="top"><img src="./.github/assets/cats.gif"/></td>
+    <td valign="top"><img src="./.github/assets/cats-mobile.gif"/></td>
+  </tr>
+</table>
+
+#
+
+<div id='front-end-dogs'/>
+
+## Dogs
+
+Nessa pagina é possivel:
+
+- Visualizar uma imagem ou video da API [Random Dog](https://random.dog/)
+  - Ao clicar no botão de atualizar uma nova imagem ou video é renderizado
+
+<table>
+  <tr>
+    <td valign="top"><img src="./.github/assets/dogs.gif"/></td>
+    <td valign="top"><img src="./.github/assets/dogs-mobile.gif"/></td>
+  </tr>
+</table>
+
+#
+
+<div id='front-end-customers'/>
+
+## Clientes
+
+Nessa pagina é possivel:
+
+- Adicionar um cliente
+
+<table>
+  <tr>
+    <td valign="top"><img src="./.github/assets/customers-add.gif"/></td>
+    <td valign="top"><img src="./.github/assets/customers-add-mobile.gif"/></td>
+  </tr>
+</table>
+
+- Deletar um cliente
+
+<table>
+  <tr>
+    <td valign="top"><img src="./.github/assets/customers-delete.gif"/></td>
+    <td valign="top"><img src="./.github/assets/customers-delete-mobile.gif"/></td>
+  </tr>
+</table>
+
+- Atualizar as informações de um cliente
+  - Nome e CPF não podem ser atualizados, pois esses dados são o que torna o cliente único.
+
+<table>
+  <tr>
+    <td valign="top"><img src="./.github/assets/customers-view-and-update.gif"/></td>
+    <td valign="top"><img src="./.github/assets/customers-view-and-update-mobile.gif"/></td>
+  </tr>
+</table>
 
 #
 
