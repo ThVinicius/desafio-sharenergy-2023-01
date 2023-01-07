@@ -19,7 +19,7 @@ function useSearch(
 
       if (filterUsers) setUsersResult(filterUsers)
     } else setUsersResult(pagUsers)
-  }, [input, pagUsers])
+  }, [input, pagUsers, field])
 
   return { usersResult }
 }
