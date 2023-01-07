@@ -4,6 +4,7 @@ const Container = styled.form`
   width: 75%;
   height: 100%;
   padding: 20px;
+  overflow-y: auto;
 `
 
 const InputsBox = styled.div`

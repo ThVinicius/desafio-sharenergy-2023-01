@@ -9,6 +9,10 @@ const Container = styled.div`
   align-items: center;
   gap: 70px;
   overflow-y: auto;
+
+  @media (max-width: 420px) {
+    padding: 25px 0;
+  }
 `
 
 export { Container }

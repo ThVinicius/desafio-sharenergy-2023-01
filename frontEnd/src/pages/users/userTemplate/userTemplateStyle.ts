@@ -9,6 +9,10 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
+
+  @media (max-width: 380px) {
+    width: 300px;
+  }
 `
 
 const AvatarBox = styled.div`

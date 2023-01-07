@@ -11,7 +11,7 @@ const Container = styled.div`
   gap: 20px;
 
   @media (max-width: 940px) {
-    width: 100%;
+    width: 95%;
   }
 `
 

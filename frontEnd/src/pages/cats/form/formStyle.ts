@@ -5,6 +5,10 @@ const Container = styled.form`
   display: flex;
   justify-content: center;
   gap: 40px;
+
+  @media (max-width: 420px) {
+    gap: 9px;
+  }
 `
 
 export { Container }

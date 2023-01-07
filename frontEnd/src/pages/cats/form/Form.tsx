@@ -13,6 +13,7 @@ import { Container } from './formStyle'
 import Button from '@mui/material/Button'
 import Card from '../../../containers/card/Card'
 import { options } from './inputOptions'
+import useWindowResize from '../../../hooks/useWindowResize'
 
 interface IProps {
   setURL: Dispatch<SetStateAction<string>>
@@ -22,6 +23,7 @@ interface IProps {
 const Form: FC<IProps> = ({ setURL, imgRef }) => {
   const [statusCode, setStatusCode] = useState('200')
   const formRef = useRef<HTMLFormElement>(null)
+  const { width } = useWindowResize()
 
   const submit = (event: FormEvent) => {
     event.preventDefault()
@@ -32,21 +34,21 @@ const Form: FC<IProps> = ({ setURL, imgRef }) => {
   }
 
   return (
-    <Card padding="20px 40px">
+    <Card padding="20px" width={width <= 450 ? '100%' : undefined}>
       <Container onSubmit={submit} ref={formRef}>
         <Autocomplete
-          sx={{ width: '200px' }}
-          freeSolo
+          sx={{ width: '80%' }}
           value={statusCode}
-          onChange={(e, value) => setStatusCode(value!)}
+          onChange={(e, newValue) => setStatusCode(newValue!)}
+          autoSelect
+          freeSolo
           options={options.map(option => option.status)}
           renderInput={params => (
             <TextField
               {...params}
-              label="Status HTTP"
+              label="Status Code"
               InputProps={{
-                ...params.InputProps,
-                type: 'search'
+                ...params.InputProps
               }}
             />
           )}
