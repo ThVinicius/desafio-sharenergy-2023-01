@@ -15,6 +15,7 @@
   <img src="https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB" height="30px"/>
   <img src="https://img.shields.io/badge/JWT-black?style=for-the-badge&logo=JSON%20web%20tokens" height="30px"/>
   <img src="https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white" height="30px"/>
+  <img src="https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white" height="30px"/>
   <img src="https://img.shields.io/badge/-jest-%23C21325?style=for-the-badge&logo=jest&logoColor=white" height="30px"/>
   <img src="https://img.shields.io/badge/nginx-%23009639.svg?style=for-the-badge&logo=nginx&logoColor=white" height="30px"/>
   <img src="https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white" height="30px"/>
@@ -27,6 +28,7 @@
 
 # Sumário
 
+- [Entrega feita](#done)
 - [Link deploy](#deploy)
 - [Páginas do FrontEnd](#front-end)
   - [Login](#front-end-login)
@@ -52,11 +54,30 @@
 
 #
 
+<div id='done'/>
+
+# Entrega feita
+
+- FrontEnd feita com React (junto com TypeScript)
+  - Layout responsivo
+- BackEnd feito com Node (junto com Express e TypeScript)
+  - As validações das requisições são feitas pelo JOI
+  - A autenticação é feita usando o token JWT
+  - O banco de dados (MongoDB) é gerenciado com o Prisma
+- Testes
+  - E2E: usando o Cypress
+  - Unitário: usando o jest com 100% de cobertura na camada de serviços
+  - Integração: usando jest e supertest
+- Aplicado o Docker na aplicação
+- Deploy da aplicação feita na AWS (EC2)
+  - Deploy automático com o GitHub Actions
+
 <div id='deploy'/>
 
 # Link deploy
 
-[link do Deploy](http://ec2-3-85-160-141.compute-1.amazonaws.com/)
+[Link da Aplicação](http://ec2-3-85-160-141.compute-1.amazonaws.com/)
+[Link da API REST](http://ec2-3-85-160-141.compute-1.amazonaws.com/api/)
 
 - Deploy realizado na AWS, utilizando Docker e EC2
 - Implementado um workflow para atualizar o deploy a cada push realizado na branch vinicius-pacheco-dos-santos
@@ -599,14 +620,22 @@ Enviar o token (Bearer token)
 # Rodar localmente
 
 - Crie um arquivo `.env` na raiz das pastas `backEnd` e `frontEnd`
+
   - No arquivo `.env` do `backEnd` deve se der as seguintes variáveis:
+
     - `PORT` porta do aplicativo. ex: `PORT=4000`
-    - `MONGO_URI` string de conexão do banco de dados MongoDB. Ex: `MONGO_URI="mongodb://localhost:27017/desafio_sharenergy"`
     - `JWT_SECRET` senha de decoficação do token JWT. EX: `JWT_SECRET=Qualquer_coisa`
+
+    - `DATABASE_URL=string de coneção com o banco de dados`
+      - É necessário ter um banco de dados mongoDB com replicas (o prisma aceita somente dessa forma), assim a melhor forma de fazer um é usando o [MongoDB Atlas](https://www.mongodb.com)(não é necessário nenhuma configuração extra)
+      - É necessário informar qual é o nome do banco de dados na sua conexão, ex: mongodb+srv://`user`:`password`@`host`/`nome-do-banco`?retryWrites=true&w=majority
+
   - No arquivo `.env` do `frontEnd` deve se der a seguinte variável:
     - `VITE_BASE_URL` url de conexão da api do `backEnd` sem a barra no final. Ex: `VITE_BASE_URL=http://localhost:4000`
-- Vá para o diretório do `backEnd` e rode o comando para instalar as dependências
+
+- Vá para o diretório do `backEnd` e rode os comandos para instalar as dependências e para criar as sementes no banco de dados
   - `npm i`
+  - `npm run db:push`
 - Vá para o diretório do `frontEnd` e rode o comando para instalar as dependências
   - `npm i`
 - Vá para o diretório do `backEnd` e rode o comando de inicializar
@@ -623,6 +652,14 @@ Enviar o token (Bearer token)
 - Vá para o diretório do `frontEnd` e crie o arquivo `.env` com o seguinte valor:
 
   - `VITE_BASE_URL=http://localhost:80/api`
+
+- Vá para o diretório do `backEnd` e crie o arquivo `.env.development` com os seguintes valores:
+
+  - `PORT=5000`
+  - `JWT_SECRET=Qualquer_coisa`
+  - `DATABASE_URL=string de coneção com o banco de dados`
+    - É necessário ter um banco de dados mongoDB com replicas (o prisma aceita somente dessa forma), assim a melhor forma de fazer um é usando o [MongoDB Atlas](https://www.mongodb.com)(não é necessário nenhuma configuração extra)
+    - É necessário informar qual é o nome do banco de dados na sua conexão, ex: mongodb+srv://`user`:`password`@`host`/`nome-do-banco`?retryWrites=true&w=majority
 
 - Vá para o diretório do projeto (onde se encontra o arquivo `docker-compose.yml`)
 - Rode o comando:
@@ -651,6 +688,7 @@ docker-compose down
 
   - `npm run test`
 
+- teste unitários com 100% de cobertura na camada de service
 - testes realizados: testes de integração
 
 ## Testes do frontEnd
