@@ -1,4 +1,4 @@
-import customerRepository from '../databases/repositories/customerRepository'
+import customerRepository from '../databases/mongodb/repositories/customerRepository'
 import { ICustomer, ICustomerUpdate } from '../types/customerType'
 import { notFound } from '../utils/throwError'
 
@@ -22,7 +22,7 @@ class CustomerService {
   }
 
   async updateCustomer(customer: ICustomerUpdate) {
-    const findCustomer = await this.getOneById(customer._id!)
+    const findCustomer = await this.getOneById(customer.id)
 
     if (!findCustomer) notFound('Cliente não encontrado!')
 

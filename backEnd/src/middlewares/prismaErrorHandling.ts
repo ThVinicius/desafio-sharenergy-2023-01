@@ -1,14 +1,16 @@
 import { ErrorRequestHandler } from 'express'
 
-export const mongoErrorHandling: ErrorRequestHandler = (
+export const prismaErrorHandling: ErrorRequestHandler = (
   error,
   _,
   res,
   next
 ) => {
   switch (error.code) {
-    case 11000:
-      const keyName = Object.keys(error.keyValue)[0]
+    case 'P2002':
+      const str = error.meta.target
+      const result = str.match(/_(.*?)_/)
+      const keyName = result[1]
 
       const errorMessage = `Já existe um cadastro com esse ${keyName}`
 

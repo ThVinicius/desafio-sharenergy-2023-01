@@ -1,9 +1,9 @@
+import { User } from '@prisma/client'
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
-import userRepository from '../databases/repositories/userRepository'
+import userRepository from '../databases/mongodb/repositories/userRepository'
 import { unauthorized } from '../utils/throwError'
-import { IUser } from './../types/userTypes'
 
 dotenv.config()
 
@@ -13,14 +13,12 @@ class UserService {
 
     this.validateUser(user, password)
 
-    const parseId = user!._id.toString()
-
-    const token = this.createOauthToken(parseId)
+    const token = this.createOauthToken(user!.id)
 
     return token
   }
 
-  validateUser(user: IUser | null, password: string) {
+  validateUser(user: User | null, password: string) {
     if (!user) unauthorized('Usuário ou senha incorreto')
 
     const compare = bcrypt.compareSync(password, user!.password)

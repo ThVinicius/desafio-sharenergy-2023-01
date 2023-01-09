@@ -1,18 +1,13 @@
-import { Document } from 'mongodb'
-import {
-  ICustomer,
-  ICustomerUpdate,
-  MongoCustomer
-} from '../types/customerType'
+import { ICustomer, ICustomerUpdate } from '../types/customerType'
 
 export abstract class CustomerRepository {
-  abstract add(customer: ICustomer): Promise<string>
+  abstract add(customer: ICustomer): Promise<ICustomer>
 
-  abstract findOneById(id: string): Promise<MongoCustomer | null>
+  abstract findOneById(id: string): Promise<ICustomer | null>
 
-  abstract getAll(): Promise<MongoCustomer[]>
+  abstract getAll(): Promise<ICustomer[]>
 
-  abstract update(customer: ICustomerUpdate): Promise<MongoCustomer | null>
+  abstract update(customer: ICustomerUpdate): Promise<ICustomer | null>
 
-  abstract deleteCustomer(id: string): Promise<Document | null>
+  abstract deleteCustomer(id: string): Promise<ICustomer | null>
 }

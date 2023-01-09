@@ -26,7 +26,7 @@ const add = joi.object({
 const id = joi.object({ id: joi.string().hex().length(24).required() })
 
 const update = joi.object({
-  _id: joi.string().hex().length(24).required(),
+  id: joi.string().hex().length(24).required(),
   email: joi.string().email().required(),
   phone: joi.string().pattern(phoneRegex).required(),
   address: joi.object({

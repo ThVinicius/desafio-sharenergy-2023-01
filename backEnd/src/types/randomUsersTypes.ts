@@ -1,4 +1,4 @@
-export interface IUsersRandom {
+export interface IRandomUser {
   picture: string
   name: string
   username: string
