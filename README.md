@@ -58,6 +58,8 @@
 
 # Entrega feita
 
+- [Link do video do YouTube](https://youtu.be/zPIx6TPybO0)
+
 - FrontEnd feita com React (junto com TypeScript)
   - Layout responsivo
 - BackEnd feito com Node (junto com Express e TypeScript)
@@ -76,8 +78,10 @@
 
 # Link deploy
 
-[Link da Aplicação](http://ec2-3-85-160-141.compute-1.amazonaws.com/)
-[Link da API REST](http://ec2-3-85-160-141.compute-1.amazonaws.com/api/)
+- Links
+
+  - [Link da Aplicação](http://ec2-3-85-160-141.compute-1.amazonaws.com/)
+  - [Link da API REST](http://ec2-3-85-160-141.compute-1.amazonaws.com/api/)
 
 - Deploy realizado na AWS, utilizando Docker e EC2
 - Implementado um workflow para atualizar o deploy a cada push realizado na branch vinicius-pacheco-dos-santos
