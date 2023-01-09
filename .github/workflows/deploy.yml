@@ -14,7 +14,7 @@ jobs:
         uses: SpicyPizza/create-envfile@v1.3
         with:
           envkey_PORT: ${{ secrets.PORT }}
-          envkey_MONGO_URI: ${{ secrets.MONGO_URI }}
+          envkey_DATABASE_URL: ${{ secrets.DATABASE_URL }}
           envkey_JWT_SECRET: ${{ secrets.JWT_SECRET }}
           directory: backEnd/
           file_name: .env.development
