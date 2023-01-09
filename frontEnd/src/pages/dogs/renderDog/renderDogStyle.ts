@@ -6,6 +6,11 @@ const Video = styled.video`
   height: 420px;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.2) 4px 4px 10px 5px;
+
+  @media (max-width: 940px) {
+    width: 85vw;
+    height: 50vh;
+  }
 `
 
 const Image = styled.img`

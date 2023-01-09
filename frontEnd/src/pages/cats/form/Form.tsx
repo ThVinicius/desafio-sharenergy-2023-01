@@ -34,7 +34,7 @@ const Form: FC<IProps> = ({ setURL, imgRef }) => {
   }
 
   return (
-    <Card padding="20px" width={width <= 450 ? '100%' : undefined}>
+    <Card padding="20px" width={width <= 500 ? '95%' : undefined}>
       <Container onSubmit={submit} ref={formRef}>
         <Autocomplete
           sx={{ width: '80%' }}
