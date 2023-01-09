@@ -20,9 +20,9 @@ class CustomerController {
   async addCustomer(req: Request, res: Response) {
     const customer: ICustomer = req.body
 
-    const customerId = await customerService.addCustomer(customer)
+    const addCustomer = await customerService.addCustomer(customer)
 
-    return res.status(201).send({ id: customerId })
+    return res.status(201).send(addCustomer)
   }
 
   async update(req: Request, res: Response) {
