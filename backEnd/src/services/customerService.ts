@@ -16,23 +16,19 @@ class CustomerService {
   }
 
   async addCustomer(customer: ICustomer) {
-    const customerId = await customerRepository.add(customer)
+    const addCustomer = await customerRepository.add(customer)
 
-    return customerId
+    return addCustomer
   }
 
   async updateCustomer(customer: ICustomerUpdate) {
-    const findCustomer = await this.getOneById(customer.id)
-
-    if (!findCustomer) notFound('Cliente não encontrado!')
+    await this.getOneById(customer.id)
 
     return await customerRepository.update(customer)
   }
 
   async deleteCustomer(id: string) {
-    const customer = await customerRepository.deleteCustomer(id)
-
-    if (customer === null) notFound('Cliente não encontrado!')
+    await customerRepository.deleteCustomer(id)
   }
 }
 

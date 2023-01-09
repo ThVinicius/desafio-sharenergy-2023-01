@@ -16,6 +16,9 @@ export const prismaErrorHandling: ErrorRequestHandler = (
 
       return res.status(409).send(errorMessage)
 
+    case 'P2025':
+      return res.status(404).send('Cliente não encontrado')
+
     default:
       next(error)
   }
