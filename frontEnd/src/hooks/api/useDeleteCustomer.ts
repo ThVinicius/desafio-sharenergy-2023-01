@@ -31,7 +31,7 @@ export default function useDeleteCustomer(setOpen: ISetOpen) {
       promise
         .then(() => {
           if (setCustomers) {
-            setCustomers(prev => prev!.filter(customer => customer._id !== id))
+            setCustomers(prev => prev!.filter(customer => customer.id !== id))
           }
 
           toast.update(toastId, {

@@ -67,7 +67,7 @@ const CustomerTemplate: FC<ICustomer> = props => {
 
   const save = () => {
     const customer = {
-      _id: props._id!,
+      id: props.id!,
       email: email.newValue,
       phone: phone.newValue,
       address: {
@@ -192,7 +192,7 @@ const CustomerTemplate: FC<ICustomer> = props => {
           open,
           setOpen,
           name: props.name,
-          _id: props._id!
+          id: props.id!
         }}
       />
     </Container>

@@ -17,7 +17,7 @@ const CustomerTemplate: FC<IProps> = props => {
       <Container>
         <ButtonsBox>
           <Link
-            to={`/customers/view/${props._id}`}
+            to={`/customers/view/${props.id}`}
             data-cy={`customer-email:${props.email}`}
           >
             <Button variant="contained">Vizualizar</Button>
@@ -48,7 +48,7 @@ const CustomerTemplate: FC<IProps> = props => {
           open,
           setOpen,
           name: props.name,
-          _id: props._id!,
+          id: props.id!,
           setCustomers: props.setCustomers
         }}
       />

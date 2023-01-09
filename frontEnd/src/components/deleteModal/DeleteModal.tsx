@@ -13,7 +13,7 @@ interface IProps {
   open: boolean
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
   name: string
-  _id: string
+  id: string
   setCustomers?: React.Dispatch<React.SetStateAction<ICustomer[] | null>>
 }
 
@@ -43,7 +43,7 @@ const DeleteModal: React.FC<IProps> = props => {
       </DialogContent>
       <DialogActions>
         <Button onClick={handleClose}>Cancelar</Button>
-        <Button onClick={() => deleteCustomer(props._id, props.setCustomers)}>
+        <Button onClick={() => deleteCustomer(props.id, props.setCustomers)}>
           Deletar
         </Button>
       </DialogActions>
