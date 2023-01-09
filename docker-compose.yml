@@ -13,7 +13,7 @@ services:
   react-front-end:
     container_name: react-front-end
     env_file:
-      - ./backEnd/.env
+      - ./frontEnd/.env
     build: ./frontEnd
     volumes:
       - build_react:/var/www/html
