@@ -2,7 +2,7 @@ import { UsersFactory } from '../factories/usersFactory'
 import userService from '../../src/services/userService'
 import userRepository from '../../src/databases/mongodb/repositories/userRepository'
 
-describe('testes dos métodos da classe UserService', () => {
+describe('testes do método signIn', () => {
   it('deve se criar um token caso o username e a senha estejam corretas', async () => {
     const user = new UsersFactory()
 
