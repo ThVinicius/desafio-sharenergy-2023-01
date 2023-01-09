@@ -60,7 +60,7 @@
 
 - [Link do video do YouTube](https://youtu.be/zPIx6TPybO0)
 
-- FrontEnd feita com React (junto com TypeScript)
+- FrontEnd feito com React (junto com TypeScript)
   - Layout responsivo
 - BackEnd feito com Node (junto com Express e TypeScript)
   - As validações das requisições são feitas pelo JOI
