@@ -209,7 +209,9 @@ describe('Testes relacionados a atualização de clientes', () => {
 
       cy.intercept('GET', `/customers/${id}`).as('get-customer')
 
-      cy.get(`[data-cy="customer-email:${customer.email}"]`).click()
+      cy.get(`[data-cy="customer-email:${customer.email}"]`).click({
+        force: true
+      })
 
       cy.wait('@get-customer')
 
